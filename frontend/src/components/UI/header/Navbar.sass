@@ -1,0 +1,48 @@
+$width768: 768px
+
+.navbar
+  background: linear-gradient(#fed8bb, #fed8bb, #fed8bb, #fffdfc)
+  font-weight: bold
+  font-size: 18px!important
+  width: 100%
+
+.NavbarComponent_left
+  width: 100%
+  justify-content: space-evenly
+
+.img-logo
+  width: 9%!important
+
+.dropdown-toggle, .nav-link
+  color: black!important
+
+.span-sale
+  border: 1px solid black!important
+  border-radius: 5px!important
+
+.navbar-date-container
+  display: flex
+  justify-content: end
+  padding-top: 5px
+  background: #fed8bb
+
+.navbar-date
+  width: 10%
+  text-align: left
+  color: black
+  font-weight: bold
+  font-size: 16px!important
+
+@media screen and (max-width: $width768)
+  .navbar
+    width: 100%
+
+  .NavbarComponent_left
+    width: 100%
+    justify-content: space-evenly
+
+  .img-logo
+    width: 20%!important
+
+  .navbar-date-container
+    display: none

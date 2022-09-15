@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <LINK REL=StyleSheet HREF="augmentedReality.css" TYPE="text/css" MEDIA=screen>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+</head>
+<body>
+<div style="position: fixed; top: 10px; width: 100%; text-align: center; z-index: 1;">
+    <nav class="navbar-desktop navbar-list navbar navbar-expand-lg ">
+        <a class="navbar-brand" href="/home">INDUMENTARIAVH</a>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    Remeras
+                </a>
+                <div class="navbar-list-item dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a id="model1-t-shirt" class="dropdown-item" href="#">Modelo 1</a>
+                    <a id="model2-t-shirt" class="dropdown-item" href="#">Modelo 2</a>
+                    <a id="model3-t-shirt" class="dropdown-item" href="#">Modelo 3</a>
+                </div>
+            </li>
+        </ul>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    Pantalones
+                </a>
+                <div class="navbar-list-item dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a id="model1-pant" class="dropdown-item" href="#">Modelo 1</a>
+                    <a id="model2-pant" class="dropdown-item" href="#">Modelo 2</a>
+                    <a id="model3-pant" class="dropdown-item" href="#">Modelo 3</a>
+                </div>
+            </li>
+        </ul>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    Buzos
+                </a>
+                <div class="navbar-list-item dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a id="model1-diver" class="dropdown-item" href="#">Modelo 1</a>
+                    <a id="model2-diver" class="dropdown-item" href="#">Modelo 2</a>
+                    <a id="model3-diver" class="dropdown-item" href="#">Modelo 3</a>
+                </div>
+            </li>
+        </ul>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    Zapatillas
+                </a>
+                <div class="navbar-list-item dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a id="model1-shoes" class="dropdown-item" href="#">Modelo 1</a>
+                    <a id="model2-shoes" class="dropdown-item" href="#">Modelo 2</a>
+                    <a id="model3-shoes" class="dropdown-item" href="#">Modelo 3</a>
+                </div>
+            </li>
+        </ul>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    Mochilas
+                </a>
+                <div class="navbar-list-item dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a id="model1-backpack" class="dropdown-item" href="#">Modelo 1</a>
+                    <a id="model2-backpack" class="dropdown-item" href="#">Modelo 2</a>
+                    <a id="model3-backpack" class="dropdown-item" href="#">Modelo 3</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<a-scene arjs>
+    <a-marker preset="hiro">
+        <a-entity position="0 0 0" scale="0.1 0.1 0.1">
+            <a-entity
+                    id="entity"
+                    position="0 0 0"
+                    scale="20 20 20"
+                    gltf-model="model/ShoesModel1.glb"
+            ></a-entity>
+            </a-sphere>
+    </a-marker>
+    <a-entity camera position="0 0 0"></a-entity>
+</a-scene>
+</body>
+<script>
+    // T-SHIRT MODELS
+    document.getElementById("model1-t-shirt").addEventListener("click", (e) => {
+        const el = document.querySelector("#entity")
+        el.setAttribute("gltf-model", "model/TshirtModel1.glb")
+        el.setAttribute("scale", "20 20 20")
+    })
+    document.getElementById("model2-t-shirt").addEventListener("click", (e) => {
+        const el = document.querySelector("#entity")
+        el.setAttribute("gltf-model", "model/TshirtModel2.glb")
+        el.setAttribute("scale", "20 20 20")
+    })
+    document.getElementById("model3-t-shirt").addEventListener("click", (e) => {
+        const el = document.querySelector("#entity")
+        el.setAttribute("gltf-model", "model/TshirtModel3.glb")
+        el.setAttribute("scale", "20 20 20")
+    })
+    // PANTS MODELS
+    document.getElementById("model1-pant").addEventListener("click", (e) => {
+        const el = document.querySelector("#entity")
+        el.setAttribute("gltf-model", "model/PantModel1.glb")
+        el.setAttribute("scale", "20 20 20")
+    })
+    document.getElementById("model2-pant").addEventListener("click", (e) => {
+        const el = document.querySelector("#entity")
+        el.setAttribute("gltf-model", "model/PantModel2.glb")
+        el.setAttribute("scale", "20 20 20")
+    })
+    document.getElementById("model3-pant").addEventListener("click", (e) => {
+        const el = document.querySelector("#entity")
+        el.setAttribute("gltf-model", "model/PantModel3.glb")
+        el.setAttribute("scale", "20 20 20")
+    })
+    // DIVER MODELS
+    document.getElementById("model1-diver").addEventListener("click", (e) => {
+        const el = document.querySelector("#entity")
+        el.setAttribute("gltf-model", "model/DiverModel1.glb")
+        el.setAttribute("scale", "20 20 20")
+    })
+    document.getElementById("model2-diver").addEventListener("click", (e) => {
+        const el = document.querySelector("#entity")
+        el.setAttribute("gltf-model", "model/DiverModel2.glb")
+        el.setAttribute("scale", "20 20 20")
+    })
+    document.getElementById("model3-diver").addEventListener("click", (e) => {
+        const el = document.querySelector("#entity")
+        el.setAttribute("gltf-model", "model/DiverModel3.glb")
+        el.setAttribute("scale", "20 20 20")
+    })
+    // SHOES MODELS
+    document.getElementById("model1-shoes").addEventListener("click", (e) => {
+        const el = document.querySelector("#entity")
+        el.setAttribute("gltf-model", "model/ShoesModel1.glb")
+        el.setAttribute("scale", "20 20 20")
+    })
+    document.getElementById("model2-shoes").addEventListener("click", (e) => {
+        const el = document.querySelector("#entity")
+        el.setAttribute("gltf-model", "model/ShoesModel2.glb")
+        el.setAttribute("scale", "20 20 20")
+    })
+    document.getElementById("model3-shoes").addEventListener("click", (e) => {
+        const el = document.querySelector("#entity")
+        el.setAttribute("gltf-model", "model/ShoesModel3.glb")
+        el.setAttribute("scale", "20 20 20")
+    })
+    // BACKPACK MODELS
+    document.getElementById("model1-backpack").addEventListener("click", (e) => {
+        const el = document.querySelector("#entity")
+        el.setAttribute("gltf-model", "model/BackpackModel1.glb")
+        el.setAttribute("scale", "20 20 20")
+    })
+    document.getElementById("model2-backpack").addEventListener("click", (e) => {
+        const el = document.querySelector("#entity")
+        el.setAttribute("gltf-model", "model/BackpackModel2.glb")
+        el.setAttribute("scale", "20 20 20")
+    })
+    document.getElementById("model3-backpack").addEventListener("click", (e) => {
+        const el = document.querySelector("#entity")
+        el.setAttribute("gltf-model", "model/BackpackModel3.glb")
+        el.setAttribute("scale", "20 20 20")
+    })
+</script>
+</html>
+<!--
+<div style="position: fixed; top: 10px; width: 100%; text-align: center; z-index: 1;">
+<button class="button" id="model1">Prenda 1</button>
+<button class="button" id="model2">Prenda 2</button>
+<button class="button" id="model3">Prenda 3</button>
+</div>
+<script>
+document.getElementById("model1").addEventListener("click", (e) => {
+    const el = document.querySelector("#entity")
+    console.log()
+})
+</script>
+-->
