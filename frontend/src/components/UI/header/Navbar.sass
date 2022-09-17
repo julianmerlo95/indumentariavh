@@ -1,4 +1,5 @@
 $width768: 768px
+$width1597: 1597px
 
 .navbar
   background: linear-gradient(#fed8bb, #fed8bb, #fed8bb, #fffdfc)
@@ -32,6 +33,10 @@ $width768: 768px
   color: black
   font-weight: bold
   font-size: 16px!important
+
+@media screen and (max-width: $width1597)
+  .navbar-date
+    width: 20%
 
 @media screen and (max-width: $width768)
   .navbar

@@ -1,5 +1,6 @@
 $width768: 768px
 $width1024: 1024px
+$width1597: 1597px
 $borderRadius: 5px
 
 .search-client-header
@@ -55,6 +56,13 @@ $borderRadius: 5px
   font-size: 11px!important
   margin-left: 2px!important
 
+@media screen and (max-width: $width1597)
+  .search-client
+    width: 60% !important
+
+  .search-client-from-input
+    margin-top: 5px
+    
 @media screen and (max-width: $width768)
 
   .search-client-header
