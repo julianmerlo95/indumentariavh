@@ -6,13 +6,13 @@ services:
     ports:
       - '3000:3000'
     stdin_open: true
-  backend:
-    build: ./backend
-    container_name: backend
-    ports:
-      - "8080:8080"
-    depends_on:
-      - mysql
+  #backend:
+   #build: ./backend
+   #container_name: backend
+   #ports:
+    #- "8080:8080"
+   #depends_on:
+    # - mysql
   mysql:
     build: ./mysql
     container_name: mysql
