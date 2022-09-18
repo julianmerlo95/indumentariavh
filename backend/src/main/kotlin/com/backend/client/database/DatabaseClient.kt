@@ -1,17 +1,17 @@
 package com.backend.client.database
 
-import com.backend.config.Config
 import org.jetbrains.exposed.sql.Database
 
 object DatabaseClient {
 
-    private val clientConfig = Config().get().getConfig("db")
-
     fun initDB() {
         try {
-            val url = clientConfig.getString("url")
-            val driver = clientConfig.getString("driver")
-            Database.connect(url, driver = driver, user = clientConfig.getString("userDB"), password = clientConfig.getString("passwordDB"))
+            Database.connect(
+                url = "jdbc:mysql://docker-mysql:3306/indumentaria?useSSL=false&enabledTLSProtocols=TLSv1.2",
+                driver = "com.mysql.cj.jdbc.Driver",
+                user = "root",
+                password = "qazWSXedc123"
+            )
         } catch (ex: Exception) {
             print("DatabaseClient error: $ex")
             throw ex
