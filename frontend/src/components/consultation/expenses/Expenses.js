@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import './Expenses.sass';
 import axios from "axios";
 import imgCLient from '../../../assets/img-client-consultation.png';
-import {useAuth0} from "@auth0/auth0-react";
 import {Loading} from "../../loading/Loading";
 import NavbarComponent from "../../UI/header/Navbar";
 import Footer from "../../UI/footer/Footer";
@@ -12,7 +11,6 @@ function ExpensesConsultation() {
     let inputValue;
     let inputName;
 
-    const {isAuthenticated} = useAuth0();
     const [expenses, setExpenses] = useState([]);
 
     // Table pagination
@@ -63,7 +61,6 @@ function ExpensesConsultation() {
 
     return (
         <div>
-            {isAuthenticated ?
                 <div>
                     <NavbarComponent></NavbarComponent>
                     <div>
@@ -98,7 +95,6 @@ function ExpensesConsultation() {
                     </div>
                     <Footer></Footer>
                 </div>
-                : <Loading/>}
         </div>
 
     )

@@ -1,16 +1,13 @@
 import React from 'react';
 import './AugmentedRealityModel.sass'
-import {useAuth0} from "@auth0/auth0-react";
 import {Loading} from "../loading/Loading";
 import NavbarComponent from "../UI/header/Navbar";
 import Footer from "../UI/footer/Footer";
 
 function AugmentedRealityModel() {
-    const {isAuthenticated} = useAuth0();
 
     return (
         <div className="home">
-            {isAuthenticated ?
                 <div>
                     <NavbarComponent></NavbarComponent>
                     <div className="">
@@ -60,7 +57,6 @@ function AugmentedRealityModel() {
                     </div>
                     <Footer></Footer>
                 </div>
-                : <Loading/>}
         </div>
     )
 }

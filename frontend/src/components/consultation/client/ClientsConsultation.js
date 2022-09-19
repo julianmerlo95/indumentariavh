@@ -4,7 +4,6 @@ import axios from "axios";
 import imgCLient from '../../../assets/img-client-consultation.png';
 import Button from "@mui/material/Button";
 import Modal from "react-bootstrap/Modal";
-import {useAuth0} from "@auth0/auth0-react";
 import {Loading} from "../../loading/Loading";
 import NavbarComponent from "../../UI/header/Navbar";
 import Footer from "../../UI/footer/Footer";
@@ -14,7 +13,6 @@ function ClientsConsultation() {
     let inputValue;
     let inputName;
 
-    const {isAuthenticated} = useAuth0();
     const [clientSelected, setClientSelected] = useState({idClient: "", name: "", lastName: "", dni: "", moneyDebt: "", isEnable: 0});
     const [clientEditSelected, setClientEditSelected] = useState({idClient: "", name: "", lastName: "", dateOfBirth: "", mail: "", moneyDebt: "", isEnable: 0});
     const [clients, setClients] = useState([]);
@@ -112,7 +110,6 @@ function ClientsConsultation() {
 
     return (
         <div>
-            {isAuthenticated ?
                 <div>
                     <NavbarComponent></NavbarComponent>
                     <div>
@@ -237,7 +234,6 @@ function ClientsConsultation() {
                     </div>
                     <Footer></Footer>
                 </div>
-                : <Loading/>}
         </div>
     )
 }

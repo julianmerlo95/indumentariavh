@@ -3,7 +3,6 @@ import './InvoiceConsultation.sass';
 import axios from "axios";
 import imgCLient from '../../../../assets/img-client-consultation.png';
 import {Loading} from '../../../loading/Loading'
-import {useAuth0} from "@auth0/auth0-react";
 import NavbarComponent from "../../../UI/header/Navbar";
 import Footer from "../../../UI/footer/Footer";
 import TablePagination from "./table/TablePagination";
@@ -14,7 +13,6 @@ function InvoiceConsultation() {
     let inputValue;
     let inputName;
 
-    const {isAuthenticated, user} = useAuth0();
     const [invoices, setInvoice] = useState([]);
 
     // Table pagination
@@ -63,8 +61,7 @@ function InvoiceConsultation() {
     }
 
     return (
-        <div>
-            {isAuthenticated ?
+        <div>  
                 <div>
                     <NavbarComponent></NavbarComponent>
                     <div>
@@ -100,7 +97,7 @@ function InvoiceConsultation() {
                                 <input className="search-client-from-input" type="submit" value="Buscar"/>
                             </form>
                         </div>
-                        {user.nickname === "pame" ? <div/> : <div className="totals-show-data">
+                        <div className="totals-show-data">
                             <div className="totals-show-data-left">
                                 <h5 className="table-title">TOTAL EFECTIVO:
                                     ${new Intl.NumberFormat("es-CL").format(invoices?.reduce((a, b) => Number(a) + Number(b.cash), 0))}
@@ -117,7 +114,7 @@ function InvoiceConsultation() {
                                     ${new Intl.NumberFormat("es-CL").format(invoices?.reduce((a, b) => Number(a) + Number(b.totalAmount), 0))}
                                 </h4>
                             </div>
-                        </div>}
+                        </div>
                         <div>
                             <TablePagination
                                 quantityItemShow={quantityItemShow}
@@ -129,7 +126,6 @@ function InvoiceConsultation() {
                     </div>
                     <Footer></Footer>
                 </div>
-                : <Loading/>}
         </div>
     )
 }

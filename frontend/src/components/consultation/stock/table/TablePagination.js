@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "@mui/material/Button";
 import './TablePagination.sass';
-import {useAuth0} from "@auth0/auth0-react";
+
 
 const TablePagination = (props) => {
     const {user} = useAuth0();

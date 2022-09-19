@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import './CurrentAccountClientConsultation.sass';
 import axios from "axios";
 import imgCLient from '../../../../assets/img-client-consultation.png';
-import {useAuth0} from "@auth0/auth0-react";
 import {Loading} from "../../../loading/Loading";
 import NavbarComponent from "../../../UI/header/Navbar";
 import Footer from "../../../UI/footer/Footer";
@@ -12,7 +11,6 @@ function CurrentAccountClientConsultation() {
     let inputValue;
     let inputName;
 
-    const {isAuthenticated} = useAuth0();
     const [currentAccountClient, setCurrentAccountClient] = useState([]);
 
     // Table pagination
@@ -61,8 +59,7 @@ function CurrentAccountClientConsultation() {
     }
 
     return (
-        <div>
-            {isAuthenticated ?
+        <div>          
                 <div>
                     <NavbarComponent></NavbarComponent>
                     <div>
@@ -97,7 +94,6 @@ function CurrentAccountClientConsultation() {
                     </div>
                     <Footer></Footer>
                 </div>
-                : <Loading/>}
         </div>
 
     )

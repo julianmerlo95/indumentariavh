@@ -5,7 +5,7 @@ import imgCLient from "../../../assets/img-client-consultation.png";
 import Modal from "react-bootstrap/Modal";
 import Button from "@mui/material/Button";
 import {Loading} from '../../loading/Loading'
-import {useAuth0} from "@auth0/auth0-react";
+
 import NavbarComponent from '../../UI/header/Navbar'
 import Footer from "../../UI/footer/Footer";
 import TablePagination from "./table/TablePagination";
@@ -24,7 +24,7 @@ function StocksConsultation() {
     const dataShow = stocks.slice(lastQuantityShow, newQuantityShow)
     const pagination = (page) => setPageInitial(page)
 
-    const {isAuthenticated} = useAuth0();
+    
     const [productSelected, setProductSelected] = useState({idProduct: "", name: "", description: "", colour: "", waist: "", quantity: "", purchasePrice: "", salePrice: "", isAugmentedReality: 0, isEnable: 1});
     const [productEditSelected, setProductEditSelected] = useState({idProduct: "", name: "", description: "", colour: "", waist: "", quantity: "", purchasePrice: "", salePrice: "", isAugmentedReality: 0, isEnable: 1});
     const [products, setProduct] = useState([]);
@@ -113,7 +113,7 @@ function StocksConsultation() {
 
     return (
         <div>
-            {isAuthenticated ?
+            
                 <div>
                     <NavbarComponent></NavbarComponent>
                     <div className="search-client-header">
@@ -230,7 +230,6 @@ function StocksConsultation() {
                     </div>
                     <Footer></Footer>
                 </div>
-                : <Loading/>}
         </div>
 
     )

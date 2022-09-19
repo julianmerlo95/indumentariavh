@@ -5,13 +5,12 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import {LogoutButton} from "../../login/Logout";
-import {useAuth0} from "@auth0/auth0-react";
+
 import {LoginButton} from "../../login/Login";
 import logoImg from '../../../assets/logo.png';
 
 function NavbarComponent() {
     const date = new Date();
-    const {isAuthenticated, user} = useAuth0();
 
     return (
         <div>
@@ -28,7 +27,7 @@ function NavbarComponent() {
                             <NavDropdown title="ALTAS" id="basic-nav-dropdown">
                                 <NavDropdown.Item href="/high/client">Cliente</NavDropdown.Item>
                                 <NavDropdown.Divider/>
-                                {user === "pame" ? "" : <NavDropdown.Item href="/high/product">Producto</NavDropdown.Item>}
+                                <NavDropdown.Item href="/high/product">Producto</NavDropdown.Item>
                             </NavDropdown>
                             <NavDropdown title="VENDER" id="basic-nav-dropdown" className="span-sale">
                                 <NavDropdown.Item href="/sales/invoice">Factura</NavDropdown.Item>
@@ -55,11 +54,6 @@ function NavbarComponent() {
                                 <NavDropdown.Item href="/augmented-reality/models">Modelos</NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
-                        <div className="button-login-container">
-                            {isAuthenticated ?
-                                <LogoutButton></LogoutButton>
-                                : <LoginButton></LoginButton>}
-                        </div>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>

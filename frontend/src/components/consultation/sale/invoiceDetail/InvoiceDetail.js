@@ -3,7 +3,7 @@ import './InvoiceDetail.sass';
 import axios from "axios";
 import imgCLient from '../../../../assets/img-client-consultation.png';
 import {Loading} from '../../../loading/Loading'
-import {useAuth0} from "@auth0/auth0-react";
+
 import NavbarComponent from "../../../UI/header/Navbar";
 import Footer from "../../../UI/footer/Footer";
 
@@ -12,7 +12,7 @@ function InvoiceDetail() {
     let inputValue;
     let inputName;
 
-    const {isAuthenticated} = useAuth0();
+    
     const [invoices, setInvoice] = useState([]);
 
     const onChangeHandler = (e) => {
@@ -44,7 +44,7 @@ function InvoiceDetail() {
 
     return (
         <div>
-            {isAuthenticated ?
+            
                 <div>
                     <NavbarComponent></NavbarComponent>
                     <div>
@@ -107,7 +107,6 @@ function InvoiceDetail() {
                     </div>
                     <Footer></Footer>
                 </div>
-                : <Loading/>}
         </div>
     )
 }

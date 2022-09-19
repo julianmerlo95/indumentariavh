@@ -27,9 +27,8 @@ function Layout() {
             <Suspense>
                 <BrowserRouter>
                     <Routes>
-                        <Route  path="/login" element={<Login/>}/>
 
-                        <Route  path="/" element={<Login/>}/>
+                        <Route  path="/" element={<Home/>}/>
                         <Route  path="/home" element={<Home/>}/>
                         <Route  path="/system" element={<System/>}/>
 

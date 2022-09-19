@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 import SellerSelected from "./SellerSelected";
 import ClientSelected from "./ClientSelected";
 import TotalsAmounts from "./TotalsAmounts";
-import {useAuth0} from "@auth0/auth0-react";
+
 import {Loading} from "../../loading/Loading";
 import NavbarComponent from "../../UI/header/Navbar";
 import Footer from "../../UI/footer/Footer";
@@ -14,7 +14,7 @@ import Footer from "../../UI/footer/Footer";
 function CurrentAccountClient() {
 
     const date = new Date();
-    const {isAuthenticated} = useAuth0();
+    
     // Total invoice
     const [totalInvoice, setTotalInvoice] = useState(0);
     // Client
@@ -151,7 +151,7 @@ function CurrentAccountClient() {
 
     return (
         <div>
-            {isAuthenticated ?
+            
                 <div>
                     <NavbarComponent></NavbarComponent>
                     <div>
@@ -212,7 +212,6 @@ function CurrentAccountClient() {
                     </div>
                     <Footer></Footer>
                 </div>
-              : <Loading/>}
         </div>
 
     )

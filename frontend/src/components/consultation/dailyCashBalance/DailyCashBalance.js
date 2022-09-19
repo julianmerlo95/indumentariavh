@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import './DailyCashBalance.sass'
-import {useAuth0} from "@auth0/auth0-react";
 import {Loading} from "../../loading/Loading";
 import NavbarComponent from "../../UI/header/Navbar";
 import axios from "axios";
@@ -82,7 +81,6 @@ function DailyCashBalance() {
 
     return (
         <div>
-            {isAuthenticated ?
                 <div>
                     <NavbarComponent></NavbarComponent>
                     <div>
@@ -131,7 +129,6 @@ function DailyCashBalance() {
                     </div>
                     <Footer></Footer>
                 </div>
-                : <Loading/>}
         </div>
     )
 }

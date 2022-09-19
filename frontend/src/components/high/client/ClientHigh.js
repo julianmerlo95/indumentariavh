@@ -9,13 +9,13 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import Checkbox from '@mui/material/Checkbox';
-import {useAuth0} from "@auth0/auth0-react";
+
 import {Loading} from "../../loading/Loading";
 import NavbarComponent from "../../UI/header/Navbar";
 import Footer from "../../UI/footer/Footer";
 
 function ClientHigh() {
-    const {isAuthenticated} = useAuth0();
+    
     const [client, setClient] = useState({idClient: "", name: "", lastName: "", dni: "", dateOfBirth: "", mail: "", isEnable: 0});
     const [checked, setChecked] = React.useState(true);
 
@@ -57,7 +57,7 @@ function ClientHigh() {
 
     return (
         <div>
-            {isAuthenticated ?
+            
                 <div>
                     <NavbarComponent></NavbarComponent>
                     <div className="client-high">
@@ -179,7 +179,6 @@ function ClientHigh() {
                     </div>
                     <Footer></Footer>
                 </div>
-                : <Loading/>}
         </div>
     )
 }

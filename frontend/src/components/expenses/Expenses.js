@@ -5,7 +5,7 @@ import './Expenses.sass';
 import {Link} from "react-router-dom";
 import SellerSelected from "../sales/currentAccountClient/SellerSelected";
 import TotalsAmounts from "./TotalsAmounts";
-import {useAuth0} from "@auth0/auth0-react";
+
 import {Loading} from "../loading/Loading";
 import NavbarComponent from "../UI/header/Navbar";
 import Footer from "../UI/footer/Footer";
@@ -13,7 +13,7 @@ import Footer from "../UI/footer/Footer";
 function Expenses() {
 
     const date = new Date();
-    const {isAuthenticated} = useAuth0();
+    
     // Seller
     const [seller, setSeller] = useState([]);
     const [sellerSelected, setSellerSelected] = useState({idUser: "", userName: "", name: "", lastName: "", mail: "", idRole: 0});
@@ -121,7 +121,7 @@ function Expenses() {
 
     return (
         <div>
-            {isAuthenticated ?
+            
                 <div>
                     <NavbarComponent></NavbarComponent>
                     <div>
@@ -177,7 +177,6 @@ function Expenses() {
                     </div>
                     <Footer></Footer>
                 </div>
-                : <Loading/>}
         </div>
 
     )

@@ -1,10 +1,9 @@
 import React from 'react';
 import './Footer.sass'
-import {useAuth0} from "@auth0/auth0-react";
+
 import {LogoutButton} from "../../login/Logout";
 
 function Footer() {
-    const {user} = useAuth0();
 
     return (
         <footer className="page-footer font-small teal pt-4">
@@ -13,9 +12,9 @@ function Footer() {
                 <div className="row">
                     <div className="footer-left col-md-6 mt-md-0 mt-3">
                         <h5 className="font-weight-bold">SOBRE EL USUARIO</h5>
-                        <p className="footer-p-left">Usuario actual: {user.nickname}</p>
-                        <p className="footer-p-left">Correo actual: {user.email}</p>
-                        <p className="footer-p-left">Rol: {user.nickname == "monica" ? "Dueño" : "Empleado"}</p>
+                        <p className="footer-p-left">Usuario actual: julian</p>
+                        <p className="footer-p-left">Correo actual: julian@indumentariavh.com</p>
+                        <p className="footer-p-left">Rol: Empleado</p>
                         <LogoutButton></LogoutButton>
                         <br></br>
                     </div>

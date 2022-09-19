@@ -1,17 +1,17 @@
 import React from 'react';
 import './System.sass'
 import imgSystem from '../../assets/system.png';
-import {useAuth0} from "@auth0/auth0-react";
+
 import NavbarComponent from "../UI/header/Navbar";
 import {Loading} from "../loading/Loading";
 import Footer from "../UI/footer/Footer";
 
 function System() {
-    const {isAuthenticated} = useAuth0();
+    
 
     return (
         <div className="system">
-            {isAuthenticated ?
+            
                 <div>
                     <NavbarComponent></NavbarComponent>
                     <div className="system-body">
@@ -46,7 +46,6 @@ function System() {
                     </div>
                     <Footer></Footer>
                 </div>
-                : <Loading/>}
         </div>
     )
 }

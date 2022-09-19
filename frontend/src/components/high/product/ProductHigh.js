@@ -9,13 +9,13 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import Checkbox from '@mui/material/Checkbox';
-import {useAuth0} from "@auth0/auth0-react";
+
 import {Loading} from "../../loading/Loading";
 import NavbarComponent from "../../UI/header/Navbar";
 import Footer from "../../UI/footer/Footer";
 
 function ProductHigh() {
-    const {isAuthenticated} = useAuth0();
+    
     const [product, setProduct] = useState({idProduct: "", name: "", description: "", color: "", waist: "", quantity: 0, purchasePrice: "", salePrice: "", isAugmentedReality: 0, isEnable: 1});
     const [checkedAugmentedReality, setCheckedAugmentedReality] = React.useState(false);
     const [checkedIsEnable, setCheckedIsEnbale] = React.useState(true);
@@ -62,7 +62,7 @@ function ProductHigh() {
 
     return (
         <div>
-            {isAuthenticated ?
+            
                 <div>
                     <NavbarComponent></NavbarComponent>
                     <div className="product-high">
@@ -207,7 +207,6 @@ function ProductHigh() {
                     </div>
                     <Footer></Footer>
                 </div>
-                : <Loading/>}
         </div>
     )
 }

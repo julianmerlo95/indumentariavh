@@ -8,7 +8,7 @@ import SellerSelected from "./SellerSelected";
 import ProductSearch from "./ProductSearch";
 import ProductSelected from "./ProductSelected";
 import TotalsAmounts from "./TotalsAmounts";
-import {useAuth0} from "@auth0/auth0-react";
+
 import {Loading} from "../../loading/Loading";
 import NavbarComponent from "../../UI/header/Navbar";
 import Footer from "../../UI/footer/Footer";
@@ -18,7 +18,7 @@ import BuildCurrentAccountClientDto from "./methods/CurrentAccountClient";
 function Invoice() {
 
     const date = new Date();
-    const {isAuthenticated} = useAuth0();
+    
 
     // Totals
     let totalInvoice = 0
@@ -271,7 +271,7 @@ function Invoice() {
 
     return (
         <div>
-            {isAuthenticated ?
+            
                 <div>
                     <NavbarComponent></NavbarComponent>
                     <div className="invoice">
@@ -358,7 +358,6 @@ function Invoice() {
                     </div>
                     <Footer></Footer>
                 </div>
-                : <Loading/>}
         </div>
     )
 }
