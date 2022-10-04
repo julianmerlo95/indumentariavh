@@ -22,9 +22,8 @@ const TablePagination = (props) => {
                     <thead>
                     <tr className="table table-client-colum">
                         <th scope="col">Id factura</th>
-                        <th scope="col">Id vendedor</th>
                         <th scope="col">Id cliente</th>
-                        <th scope="col">Metodo de pago</th>
+                        <th scope="col">Vendedor</th>
                         <th scope="col">Fecha</th>
                         <th scope="col">Descuento</th>
                         <th scope="col">Efectivo</th>
@@ -38,9 +37,8 @@ const TablePagination = (props) => {
                         return (
                             <tr key={index}>
                                 <th scope="row">{invoice.idBill}</th>
-                                <th scope="row">{invoice.idUser}</th>
                                 <th scope="row">{invoice.idClient}</th>
-                                <th scope="row">{invoice.idPaymentMethod === 1 ? "EFECTIVO" : invoice.idPaymentMethod === 2 ? "TARJETA" : "FIADO" }</th>
+                                <th scope="row">{invoice.idUser = 0 ? "Generico" : invoice.idUser = 1 ? "Monica" : invoice.idUser = 2 ? "Pame" : invoice.idUser = 3 ? "Lucia" : "Julian"}</th>
                                 <th scope="row">{invoice.dateRegister.slice(0, 10)}</th>
                                 <th scope="row">${new Intl.NumberFormat("es-CL").format(invoice.totalDiscount)}</th>
                                 <th scope="row">${new Intl.NumberFormat("es-CL").format(invoice.cash)}</th>

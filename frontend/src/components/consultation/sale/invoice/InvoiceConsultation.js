@@ -22,7 +22,7 @@ function InvoiceConsultation() {
     const quantityItemShow = 25;
     const newQuantityShow = pageInitial * quantityItemShow;
     const lastQuantityShow = newQuantityShow - quantityItemShow;
-    const dataShow = invoices.slice(lastQuantityShow, newQuantityShow)
+    const dataShow = invoices && invoices?.length > 0 ? invoices.slice(lastQuantityShow, newQuantityShow) : 0
     const pagination = (page) => setPageInitial(page)
 
     useEffect(() => {
@@ -30,8 +30,8 @@ function InvoiceConsultation() {
     }, []);
 
     const onChangeHandler = (e) => {
-        if (e.target.value.length >= 20) {
-            alert("Los campos tienen un maximo de 20 caracteres")
+        if (e.target.value.length >= 30) {
+            alert("Los campos tienen un maximo de 30 caracteres")
             return
         }
         inputValue = e.target.value;
@@ -44,8 +44,8 @@ function InvoiceConsultation() {
             let url;
             event.preventDefault();
 
-            if (inputValue?.length >= 20 || inputValue === "" || inputValue === undefined) {
-                alert("Debe ingresar algun dato para poder realizar la busqueda o ser menor a 20 caracteres")
+            if (inputValue?.length >= 30 || inputValue === "" || inputValue === undefined) {
+                alert("Debe ingresar algun dato para poder realizar la busqueda o ser menor a 30 caracteres")
                 return
             }
 
@@ -55,7 +55,9 @@ function InvoiceConsultation() {
                 url = `${process.env.REACT_APP_API_URL}/bills?${inputName}=${inputValue}`
             }
 
-            axios.get(url).then(response => { if (response.data.error) { setInvoice([]) } setInvoice(response.data) });
+            axios.get(url)
+            .then(response => { if (response.data.error) { setInvoice([]) } setInvoice(response.data) })
+            .catch(ex =>  window.location.replace('/error'));
         } catch (ex) {
             window.location.replace('/error')
             throw ex
@@ -79,7 +81,7 @@ function InvoiceConsultation() {
                         <div className="search-client">
                             <form className="form search-client-from" onSubmit={(event) => searchInvoiceHandler(event)}>
                                 <label>
-                                    <input type="number" name="id" placeholder="Buscar por id"
+                                    <input type="number" name="id" placeholder="Buscar por id factura"
                                            onChange={(e) => onChangeHandler(e)}/>
                                 </label>
                                 <input className="search-client-from-input" type="submit" value="Buscar"/>

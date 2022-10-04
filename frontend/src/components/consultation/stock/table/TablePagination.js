@@ -42,10 +42,10 @@ const TablePagination = (props) => {
                     {stocks && stocks.length > 0 ? stocks.map((stock, index) => {
                         return (
                             <tr key={index}>
-                                <th scope="row">{stock.idProduct}</th>
-                                <th scope="row">{stock.name}</th>
-                                <th scope="row">{stock.description}</th>
-                                <th scope="row">{stock.colour}</th>
+                                <th scope="row">{stock.idProduct.toUpperCase()}</th>
+                                <th scope="row">{stock.name.toUpperCase()}</th>
+                                <th scope="row">{stock.description.toUpperCase()}</th>
+                                <th scope="row">{stock.colour.toUpperCase()}</th>
                                 <th scope="row">{stock.waist}</th>
                                 <th scope="row">{stock.quantity}</th>
                                 <th scope="row">{user.nickname == "pame" ? "" : `$${new Intl.NumberFormat("es-CL").format(Number(stock.purchasePrice))}`}</th>

@@ -22,10 +22,10 @@ function ProductSelected(props) {
                     {props.listProductSelected && props.listProductSelected.length > 0 ? props.listProductSelected.map((product, index) => {
                         return (
                             <tr key={index} className="table table-body-data productSelected-table">
-                                <th scope="row">{product.idProduct}</th>
-                                <th scope="row">{product.name}</th>
-                                <th scope="row">{product.description}</th>
-                                <th scope="row">{product.colour}</th>
+                                <th scope="row">{product.idProduct.toUpperCase()}</th>
+                                <th scope="row">{product.name.toUpperCase()}</th>
+                                <th scope="row">{product.description.toUpperCase()}</th>
+                                <th scope="row">{product.colour.toUpperCase()}</th>
                                 <th scope="row">{product.waist}</th>
                                 <th scope="row">1</th>
                                 <th scope="row">${new Intl.NumberFormat("es-CL").format(product.salePrice)}</th>

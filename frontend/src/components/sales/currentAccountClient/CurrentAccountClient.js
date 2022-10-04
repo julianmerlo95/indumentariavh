@@ -131,7 +131,9 @@ function CurrentAccountClient() {
                     "moneyDebit": amountDebit,
                     "newMoneyDebt": (Number((totalInvoice - amountDebit)) + Number(amountCredit))
                 }
-                axios.post(url, {currentAccountClient}).then(response => { if (!response.data.error) { window.location.replace('/success')} });
+                axios.post(url, {currentAccountClient})
+                .then(response => { if (!response.data.error) { window.location.replace('/success')} })
+                .catch(ex =>  window.location.replace('/error'));
                 return
             } catch (ex) {
                 window.location.replace('/error');

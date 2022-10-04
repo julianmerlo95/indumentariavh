@@ -249,7 +249,9 @@ function Invoice() {
                         if (borrowedCash > 0) {
                             let currentAccountClient = BuildCurrentAccountClientDto(clientSelected, sellerSelected, borrowedCash)
                             try {
-                                axios.post(urlClient, {currentAccountClient}).then(response => { if (!response.data.error) { window.location.replace('/success')} });
+                                axios.post(urlClient, {currentAccountClient})
+                                .then(response => { if (!response.data.error) { window.location.replace('/success')} })
+                                .catch(ex =>  window.location.replace('/error'));
                             } catch (ex) {
                               window.location.replace('/error-client');
                               throw ex

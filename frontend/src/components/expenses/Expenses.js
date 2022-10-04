@@ -56,7 +56,8 @@ function Expenses() {
                     setSeller([])
                 }
                 setSeller(response.data)
-            });
+            })
+            .catch(ex =>  window.location.replace('/error'));
         } catch (ex) {
             throw ex //TODO: Redirect
         }
@@ -65,7 +66,6 @@ function Expenses() {
     // Expenses method
     const expensesSelectedHandler = async (event) => {
         event.preventDefault()
-        console.log(inputName)
         if (inputName === "Sueldo") {
             setExpensesMethodSelected({"idExpenses": 1, "name": "Sueldo"})
         } else if (inputName === "Mercaderia") {
@@ -73,7 +73,6 @@ function Expenses() {
         } else if (inputName === "Retiro de dinero") {
             setExpensesMethodSelected({"idExpenses": 3, "name": "Retiro de dinero"})
         }
-        console.log(expensesMethodSelected)
     }
 
     // Save
@@ -101,7 +100,9 @@ function Expenses() {
                     "idExpenseType": expensesMethodSelected.idExpenses,
                     "expenseName": expensesMethodSelected.name,
                 }
-                axios.post(url, {expense}).then(response => { if (!response.data.error) { window.location.replace('/success')} });
+                axios.post(url, {expense})
+                .then(response => { if (!response.data.error) { window.location.replace('/success')} })
+                .catch(ex =>  window.location.replace('/error'));
                 return
             } catch (ex) {
                 window.location.replace('/error');

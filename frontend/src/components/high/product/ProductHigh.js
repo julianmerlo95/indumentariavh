@@ -16,7 +16,7 @@ import Footer from "../../UI/footer/Footer";
 
 function ProductHigh() {
     const {isAuthenticated} = useAuth0();
-    const [product, setProduct] = useState({idProduct: "", name: "", description: "", color: "", waist: "", quantity: 0, purchasePrice: "", salePrice: "", isAugmentedReality: 0, isEnable: 1});
+    const [product, setProduct] = useState({idProduct: "", name: "", description: "", colour: "", waist: "", quantity: 0, purchasePrice: "", salePrice: "", isAugmentedReality: 0, isEnable: 1});
     const [checkedAugmentedReality, setCheckedAugmentedReality] = React.useState(false);
     const [checkedIsEnable, setCheckedIsEnbale] = React.useState(true);
 
@@ -42,21 +42,32 @@ function ProductHigh() {
         return
     };
 
+    const toUpperCaseProperties = (product) => {
+        product.idProduct.toLocaleUpperCase()
+        product.name.toLocaleUpperCase()
+        product.description.toLocaleUpperCase()
+        product.colour.toLocaleUpperCase()
+        product.waist.toLocaleUpperCase()
+        return product
+    }
+
     const createProductHandler = async (event) => {
         event.preventDefault();
 
         try {
-            if (product?.idProduct?.length <= 15 && product?.name?.length <= 15 && product?.color?.length <= 15 && 
+            if (product?.idProduct?.length <= 15 && product?.name?.length <= 15 && product?.colour?.length <= 15 && 
                 product?.waist?.length <= 15 && product?.quantity?.length <= 15 && product?.salePrice?.length <= 15) {
                 product.isAugmentedReality = checkedAugmentedReality === true ? 1 : 0
                 product.isEnable = checkedIsEnable === true ? 1 : 0
-                axios.post(`${process.env.REACT_APP_API_URL}/products/product`, {product}).then(response => window.location.replace('/success')); // TODO: Redirect
+                toUpperCaseProperties(product)
+                axios.post(`${process.env.REACT_APP_API_URL}/products/product`, {product})
+                .then(response => window.location.replace('/success'))
+                .catch(ex =>  window.location.replace('/error'));
             } else {
                 alert("Los campos id producto, nombre, color, talle, cantidad y precio de venta son obligatorios. Ademas del largo de los campos")
             }
         } catch (ex) {
             window.location.replace('/error')
-            throw ex
         }
     }
 

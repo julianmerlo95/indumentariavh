@@ -16,8 +16,8 @@ function InvoiceDetail() {
     const [invoices, setInvoice] = useState([]);
 
     const onChangeHandler = (e) => {
-        if (e.target.value.length >= 20) {
-            alert("Los campos tienen un maximo de 20 caracteres")
+        if (e.target.value.length >= 30) {
+            alert("Los campos tienen un maximo de 30 caracteres")
             return
         }
         inputValue = e.target.value;
@@ -30,12 +30,14 @@ function InvoiceDetail() {
             let url = `${process.env.REACT_APP_API_URL}/bills/${inputValue}/details`
             event.preventDefault();
 
-            if (inputValue?.length >= 20 || inputValue === "" || inputValue === undefined) {
-                alert("Debe ingresar algun dato para poder realizar la busqueda o ser menor a 20 caracteres")
+            if (inputValue?.length >= 30 || inputValue === "" || inputValue === undefined) {
+                alert("Debe ingresar algun dato para poder realizar la busqueda o ser menor a 30 caracteres")
                 return
             }
 
-            axios.get(url).then(response => { if (response.data.error) { setInvoice([]) } setInvoice(response.data) });
+            axios.get(url)
+            .then(response => { if (response.data.error) { setInvoice([]) } setInvoice(response.data) })
+            .catch(ex =>  window.location.replace('/error'));
         } catch (ex) {
             window.location.replace('/error')
             throw ex

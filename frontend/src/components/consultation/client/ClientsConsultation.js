@@ -30,7 +30,7 @@ function ClientsConsultation() {
     const quantityItemShow = 20;
     const newQuantityShow = pageInitial * quantityItemShow;
     const lastQuantityShow = newQuantityShow - quantityItemShow;
-    const dataShow = clients.slice(lastQuantityShow, newQuantityShow)
+    const dataShow = clients && clients?.length > 0 ? clients.slice(lastQuantityShow, newQuantityShow) : 0
     const pagination = (page) => setPageInitial(page)
 
     useEffect(() => {
@@ -77,7 +77,8 @@ function ClientsConsultation() {
                     }
                     setClients(response.data)
                     window.location.replace('/consultation/clients');
-                });
+                })
+                .catch(ex =>  window.location.replace('/error'));
             } else {
                 alert("Validar el largo de los campos ingresados")
             }
@@ -93,8 +94,8 @@ function ClientsConsultation() {
             let url;
             event.preventDefault();
 
-            if (inputValue?.length >= 20 || inputValue === "" || inputValue === undefined) {
-                alert("Debe ingresar algun dato para poder realizar la busqueda o ser menor a 20 caracteres")
+            if (inputValue?.length >= 30 || inputValue === "" || inputValue === undefined) {
+                alert("Debe ingresar algun dato para poder realizar la busqueda o ser menor a 30 caracteres")
                 return
             }
 
@@ -103,7 +104,9 @@ function ClientsConsultation() {
             } else {
                 url = `${process.env.REACT_APP_API_URL}/v1/clients?${inputName}=${inputValue}`
             }
-            axios.get(url).then(response => { if (response.data.error) { setClients([]) } setClients(response.data) });
+            axios.get(url)
+            .then(response => { if (response.data.error) { setClients([]) } setClients(response.data) })
+            .catch(ex =>  window.location.replace('/error'));
         } catch (ex) {
             window.location.replace('/error');
             throw ex

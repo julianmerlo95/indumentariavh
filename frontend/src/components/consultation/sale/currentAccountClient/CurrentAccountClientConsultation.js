@@ -20,7 +20,7 @@ function CurrentAccountClientConsultation() {
     const quantityItemShow = 25;
     const newQuantityShow = pageInitial * quantityItemShow;
     const lastQuantityShow = newQuantityShow - quantityItemShow;
-    const dataShow = currentAccountClient.slice(lastQuantityShow, newQuantityShow)
+    const dataShow = currentAccountClient && currentAccountClient?.length > 0 ? currentAccountClient.slice(lastQuantityShow, newQuantityShow) : 0
     const pagination = (page) => setPageInitial(page)
 
     useEffect(() => {
@@ -28,8 +28,8 @@ function CurrentAccountClientConsultation() {
     }, []);
 
     const onChangeHandler = (e) => {
-        if (e.target.value.length >= 20) {
-            alert("Los campos tienen un maximo de 20 caracteres")
+        if (e.target.value.length >= 30) {
+            alert("Los campos tienen un maximo de 30 caracteres")
             return
         }
         inputValue = e.target.value;
@@ -42,8 +42,8 @@ function CurrentAccountClientConsultation() {
             let url;
             event.preventDefault();
 
-            if (inputValue?.length >= 20 || inputValue === "" || inputValue === undefined) {
-                alert("Debe ingresar algun dato para poder realizar la busqueda o ser menor a 20 caracteres")
+            if (inputValue?.length >= 30 || inputValue === "" || inputValue === undefined) {
+                alert("Debe ingresar algun dato para poder realizar la busqueda o ser menor a 30 caracteres")
                 return
             }
             
@@ -53,7 +53,9 @@ function CurrentAccountClientConsultation() {
                 url = `${process.env.REACT_APP_API_URL}/current-account-client?${inputName}=${inputValue}`
             }
             
-            axios.get(url).then(response => { if (response.data.error) { setCurrentAccountClient([]) } setCurrentAccountClient(response.data) });
+            axios.get(url)
+            .then(response => { if (response.data.error) { setCurrentAccountClient([]) } setCurrentAccountClient(response.data) })
+            .catch(ex =>  window.location.replace('/error'));
         } catch (ex) {
             window.location.replace('/error');
             throw ex

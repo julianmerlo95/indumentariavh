@@ -20,7 +20,7 @@ function ExpensesConsultation() {
     const quantityItemShow = 25;
     const newQuantityShow = pageInitial * quantityItemShow;
     const lastQuantityShow = newQuantityShow - quantityItemShow;
-    const dataShow = expenses.slice(lastQuantityShow, newQuantityShow)
+    const dataShow = expenses && expenses?.length > 0 ? expenses.slice(lastQuantityShow, newQuantityShow) : 0
     const pagination = (page) => setPageInitial(page)
 
     useEffect(() => {
@@ -42,8 +42,8 @@ function ExpensesConsultation() {
             let url;
             event.preventDefault();
 
-            if (inputValue?.length >= 20 || inputValue === "" || inputValue === undefined) {
-                alert("Debe ingresar algun dato para poder realizar la busqueda o ser menor a 20 caracteres")
+            if (inputValue?.length >= 30 || inputValue === "" || inputValue === undefined) {
+                alert("Debe ingresar algun dato para poder realizar la busqueda o ser menor a 30 caracteres")
                 return
             }
 
@@ -54,7 +54,8 @@ function ExpensesConsultation() {
                     setExpenses([])
                 }
                 setExpenses(response.data)
-            });
+            })
+            .catch(ex =>  window.location.replace('/error'));
         } catch (ex) {
             window.location.replace('/error');
             throw ex

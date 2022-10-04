@@ -54,6 +54,7 @@ function DailyCashBalance() {
                 }
                 return
             })
+            .catch(ex =>  window.location.replace('/error'));
         });
         axios.get(`${process.env.REACT_APP_API_URL}/current-account-client/today`).then((response) => {
             setCurrentAccountClient(response.data.length)
@@ -68,7 +69,8 @@ function DailyCashBalance() {
                     setMoneyDebt(moneyDebt)
                 }
             });
-        });
+        })
+        .catch(ex =>  window.location.replace('/error'));
         axios.get(`${process.env.REACT_APP_API_URL}/expenses`).then((response) => {
             setExpenses(response.data.length)
             response.data.map((expense) => {
@@ -77,7 +79,8 @@ function DailyCashBalance() {
                     setAmount(amount)
                 }
             });
-        });
+        })
+        .catch(ex =>  window.location.replace('/error'));
     }, []);
 
     return (

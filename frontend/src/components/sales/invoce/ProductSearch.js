@@ -60,21 +60,19 @@ function ProductSearch(props) {
                                         <th scope="col">Talle</th>
                                         <th scope="col">Cantidad</th>
                                         <th scope="col">Precio</th>
-                                        <th scope="col">Estado</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     {props.products && props.products.length > 0 ? props.products.map((product, index) => {
                                         return (
                                             <tr key={index} className="table table-body-data">
-                                                <th scope="row">{product.idProduct}</th>
-                                                <th scope="row">{product.name}</th>
-                                                <th scope="row">{product.description}</th>
-                                                <th scope="row">{product.colour}</th>
+                                                <th scope="row">{product.idProduct.toUpperCase()}</th>
+                                                <th scope="row">{product.name.toUpperCase()}</th>
+                                                <th scope="row">{product.description.toUpperCase()}</th>
+                                                <th scope="row">{product.colour.toUpperCase()}</th>
                                                 <th scope="row">{product.waist}</th>
                                                 <th scope="row">{product.quantity}</th>
                                                 <th scope="row">${product.salePrice}</th>
-                                                <th scope="row">{product.isEnable === 1 ? "HABILITADO" : "DESHABILITADO"}</th>
                                                 <Button className="client-high-button-select" variant="contained" size="small" color="success"
                                                         onClick={() => props.productSelectedHandler(product)}>Elegir
                                                 </Button>

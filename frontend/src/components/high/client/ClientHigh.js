@@ -44,7 +44,9 @@ function ClientHigh() {
                 client?.dni?.length <= 15 && client?.dateOfBirth?.length <= 15 && client?.mail?.length <= 25 &&
                  client?.idClient && client?.name && client?.dni) {
                 event.preventDefault();
-                axios.post(`${process.env.REACT_APP_API_URL}/clients/client`, {client}).then(response => window.location.replace('/success'));
+                axios.post(`${process.env.REACT_APP_API_URL}/clients/client`, {client})
+                .then(response => window.location.replace('/success'))
+                .catch(ex =>  window.location.replace('/error'));
                 return
             } else {
                 alert("Los campos id, nombre y dni son obligatorios. Ademas del largo de los campos")

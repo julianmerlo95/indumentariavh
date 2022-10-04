@@ -21,7 +21,7 @@ function StocksConsultation() {
     const quantityItemShow = 25;
     const newQuantityShow = pageInitial * quantityItemShow;
     const lastQuantityShow = newQuantityShow - quantityItemShow;
-    const dataShow = stocks.slice(lastQuantityShow, newQuantityShow)
+    const dataShow = stocks && stocks?.length > 0 ? stocks.slice(lastQuantityShow, newQuantityShow) : 0
     const pagination = (page) => setPageInitial(page)
 
     const {isAuthenticated} = useAuth0();
@@ -77,7 +77,8 @@ function StocksConsultation() {
                     }
                     setProduct(response.data)
                     window.location.replace('/consultation/stocks');
-                });
+                })
+                .catch(ex =>  window.location.replace('/error'));
             } else {
                 alert("Validar el largo de los campos ingresados")
             }
@@ -105,7 +106,9 @@ function StocksConsultation() {
         }
 
         try {
-            axios.get(url).then(response => { if (response.data.error) { setStock([]) } setStock(response.data) });
+            axios.get(url)
+            .then(response => { if (response.data.error) { setStock([]) } setStock(response.data) })
+            .catch(ex =>  window.location.replace('/error'));
         } catch (ex) {
             throw ex
         }
@@ -132,10 +135,6 @@ function StocksConsultation() {
                             <input className="search-product-from-input" type="submit" value="Buscar"/>
                             <label>
                                 <input type="text" name="name" placeholder="Buscar por nombre" onChange={(e) => onChangeHandler(e)}/>
-                            </label>
-                            <input className="search-product-from-input" type="submit" value="Buscar"/>
-                            <label>
-                                <input type="text" name="description" placeholder="Buscar por descripcion" onChange={(e) => onChangeHandler(e)}/>
                             </label>
                             <input className="search-product-from-input" type="submit" value="Buscar"/>
                             <label>
@@ -188,10 +187,10 @@ function StocksConsultation() {
                                                 </thead>
                                                 <tbody>
                                                 <tr className="table table-body-data">
-                                                    <th scope="row">{productSelected.idProduct}</th>
-                                                    <th scope="row">{productSelected.name}</th>
-                                                    <th scope="row">{productSelected.description}</th>
-                                                    <th scope="row">{productSelected.colour}</th>
+                                                    <th scope="row">{productSelected.idProduct.toLocaleLowerCase()}</th>
+                                                    <th scope="row">{productSelected.name.toUpperCase()}</th>
+                                                    <th scope="row">{productSelected.description.toUpperCase()}</th>
+                                                    <th scope="row">{productSelected.colour.toUpperCase()}</th>
                                                     <th scope="row">{productSelected.waist}</th>
                                                     <th scope="row">{productSelected.quantity}</th>
                                                     <th scope="row">${new Intl.NumberFormat("es-CL").format(Number(productSelected.purchasePrice))}</th>
